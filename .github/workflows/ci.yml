@@ -8,14 +8,14 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: windows-latest
+    runs-on: windows
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Install .NET 8.0
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
 
