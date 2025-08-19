@@ -11,26 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
+     
       - name: Checkout repository
         uses: actions/checkout@v4
 
+     
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '6.0.x'
 
-      
+     
       - name: Restore dependencies
         run: dotnet restore
 
-     
+    
       - name: Build
         run: dotnet build --configuration Release --no-restore
 
-      - name: Run Unit Tests
-        run: dotnet test ./tests/MyApp.UnitTests/MyApp.UnitTests.csproj --configuration Release --no-build --verbosity normal
-
-      # Run integration tests
-      - name: Run Integration Tests
-        run: dotnet test ./tests/MyApp.IntegrationTests/MyApp.IntegrationTests.csproj --configuration Release --no-build --verbosity normal
+     
+      - name: Test
+        run: dotnet test --configuration Release --no-build --verbosity normal
