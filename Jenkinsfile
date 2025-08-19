@@ -5,6 +5,9 @@ pipeline {
 
     stages {
         stage('Checkout Code') {
+            when {
+                branch 'main'
+            }
             steps {
                 checkout scm
             }
