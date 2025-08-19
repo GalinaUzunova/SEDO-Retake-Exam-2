@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             when {
-                branch 'main'
+                branch main
             }
             steps {
                 checkout scm
@@ -13,7 +13,7 @@ pipeline {
 
         stage('Restore') {
             when {
-                branch 'main'
+                branch main
             }
             steps {
                 bat 'dotnet restore'
@@ -22,7 +22,7 @@ pipeline {
 
         stage('Build') {
             when {
-                branch 'main'
+                branch main
             }
             steps {
                 bat 'dotnet build --configuration Release'
@@ -31,7 +31,7 @@ pipeline {
 
         stage('Test') {
             when {
-                branch 'main'
+                branch main
             }
             steps {
                 bat 'dotnet test --configuration Release --no-build'
