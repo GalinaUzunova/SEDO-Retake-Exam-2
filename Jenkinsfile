@@ -1,10 +1,8 @@
 pipeline {
     agent any
 
-   
-
     stages {
-        stage('Checkout Code') {
+        stage('Checkout') {
             when {
                 branch 'main'
             }
@@ -13,26 +11,31 @@ pipeline {
             }
         }
 
-        stage('Restore dependencies') {
+        stage('Restore') {
+            when {
+                branch 'main'
+            }
             steps {
                 bat 'dotnet restore'
             }
         }
 
         stage('Build') {
+            when {
+                branch 'main'
+            }
             steps {
                 bat 'dotnet build --configuration Release'
             }
         }
 
-        stage('Unit Tests') {
+        stage('Test') {
+            when {
+                branch 'main'
+            }
             steps {
-                bat 'dotnet test  --configuration Release --no-build'
+                bat 'dotnet test --configuration Release --no-build'
             }
         }
-
-        
     }
-
-   
 }
